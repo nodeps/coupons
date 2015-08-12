@@ -10,4 +10,5 @@ for(var i=0; i＜layers.length; i++)
 {
     //将遍历到的图层的名称，修改为前缀名加序号的格式。您可以根据实际情况，自定义图层名格式。
     layers[i].name = prefix + i;
+    alert(layers[i].name);
 }
