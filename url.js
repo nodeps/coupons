@@ -16,7 +16,7 @@ function GetRequest() {
 
 
 function Idlim(str){
-   var key = '21232f297a57a5a743894a0e4a801fc3';
+   var key = '8d993e90c2905c7599dc56b0b152c11a';
 	var strs = str.split("&");//参数转化为数组
 	strs.sort();//参数字母排序
    var strS1 = strs.join("&");
@@ -25,7 +25,25 @@ function Idlim(str){
    var strPass = strS2.split("&");
    strPass.sort();
    var strS1 = strPass.join("&");
+   return strS1;
 	console.log(strS1);
 }
-var str = 'parentId=10223238ureid=wew&pass=342554';
+var str = 'partnerId=80002000003&userId=37991842@qq.com';
 Idlim(str);
+
+function post(url,data){  
+    var req = new XMLHttpRequest(); 
+    req.open("POST", url, true);  
+    req.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8;");     
+    req.send(data);  
+    req.onreadystatechange = function(){  
+        console.log(req);
+    }  
+    
+} 
+
+var url = 'http://xg-mid.vip.vip.com/pay/queryPermission'
+
+var data = 'partnerId=80002000003&sign=267b739ad1f642b5199635f79d0e53b6&userId=37991842@qq.com';
+data =Idlim(str);
+post(url,data);  
