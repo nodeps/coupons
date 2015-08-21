@@ -10,13 +10,20 @@
 
 app.preferences.rulerUnits = Units.PIXELS; // set Pixel for checking bounds
 var doc = app.activeDocument;
-var buttonB,coupon,button,buttonB,rule,foot;
+var buttonB,coupon,button,buttonB,rule,foot,buttonText,ruleText;
 var names = new Array();
 function getLayerY (name) {
 	var currentLayer = doc.layers[i].merge();
 	var Ypoint = currentLayer.bounds[1];
 	return Ypoint;
-	
+}
+function getText (name) {
+	for( var j = 0; j < doc.layers[i].artLayers.length; j++) {
+		if(doc.layers[i].artLayers[j].name == name){
+			var layerText = doc.layers[i].artLayers[j].textItem.contents;
+			return layerText;
+		}
+	}
 }
 for(var i =0; i<doc.layers.length; i++){
 	
@@ -28,26 +35,26 @@ for(var i =0; i<doc.layers.length; i++){
 			coupon = getLayerY('coupon');
 		}
 		if (doc.layers[i].name == 'button'){
+			buttonText = getText('button-text');
+			
 			var currentLayer = doc.layers[i].merge();
 			button = currentLayer.bounds[1];
 			buttonB = currentLayer.bounds[3];
 		}
 		if (doc.layers[i].name == 'rule'){
+			
+    		ruleText = getText('rule-text');
 			rule = getLayerY('rule');
 		}
 		if (doc.layers[i].name == 'foot'){
 			foot = getLayerY('foot');
 		}
 		
-	}else if(doc.layers[i].name == 'rule-txt'){
-		var ruleTxt = doc.layers[i];
-		var rr =ruleTxt.textItem.contents;
-		
 	}
 }
 
 names =[coupon/2,coupon,button,buttonB,rule,foot];
-alert(names);
+alert(names+ruleText+buttonText);
 doc.close(SaveOptions.DONOTSAVECHANGES);
 
 
