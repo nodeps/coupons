@@ -3,7 +3,7 @@
 // create date:2015-08-12
 
 /*
-领券生成器.jsx 1.0
+领券生成器.jsx 1.01
 */
 
 #target photoshop
